@@ -35,7 +35,7 @@ mean_values = {
 if st.button('Predict'):
     user_row = np.array([[type_dict[m_type], airtemp, process_temp, rot_speed, torque, tool_wear]])
     user_row_scaled = scaler.transform(user_row)
-    risk_score = float(xgb.predict_proba(user_row_scaled)[0,1]
+    risk_score = float(xgb.predict_proba(user_row_scaled)[0,1])
     if risk_score<0.01 : risk_score+=0.01
                        
     prediction = "🛑 Failure" if risk_score >= 0.4 else "✅ Healthy"
