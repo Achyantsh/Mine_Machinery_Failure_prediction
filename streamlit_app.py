@@ -10,7 +10,7 @@ feature_cols = ['Type', 'Air temperature [K]', 'Process temperature [K]',
 type_dict = {'L': 0, 'M': 1, 'H': 2}
 
 st.set_page_config(page_title="Mining Failure Predictor", page_icon="⛏", layout="centered")
-st.markdown("<h1 style='color:#F7CB3B;'>⛏️ Mining Equipment Failure Prediction</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color:#ADDCFF;'>Mining Equipment Failure Prediction</h1>", unsafe_allow_html=True)
 st.subheader("Enter sensor readings:")
 
 col1, col2 = st.columns(2)
@@ -35,7 +35,9 @@ mean_values = {
 if st.button('Predict'):
     user_row = np.array([[type_dict[m_type], airtemp, process_temp, rot_speed, torque, tool_wear]])
     user_row_scaled = scaler.transform(user_row)
-    risk_score = float(xgb.predict_proba(user_row_scaled)[0,1])
+    risk_score = float(xgb.predict_proba(user_row_scaled)[0,1]
+    if risk_score<0.01 : risk_score+=0.01
+                       
     prediction = "🛑 Failure" if risk_score >= 0.4 else "✅ Healthy"
     st.markdown(f"<h2>Prediction: <span style='color:#B026FF;'>{prediction}</span></h2>", unsafe_allow_html=True)
     st.markdown(f"<h3>Failure Probability: <span style='color:#00E676;'>{risk_score:.2f}</span></h3>", unsafe_allow_html=True)
