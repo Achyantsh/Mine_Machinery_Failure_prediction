@@ -41,7 +41,7 @@ We utilized the **AI4I 2020 Predictive Maintenance Dataset** from the UCI Machin
 * **Language:** Python
 * **Data Manipulation:** Pandas, NumPy
 * **Visualization:** Matplotlib, Seaborn
-* **Machine Learning:** Scikit-Learn, XGBoost
+* **Machine Learning:** Scikit-Learn, XGBoost, RandomForest
 * **Deployment:** Streamlit
 * **Model Interpretation:** Feature Importance & Confusion Matrices
 
